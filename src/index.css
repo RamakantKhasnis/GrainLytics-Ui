@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 142 60% 45%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 16% 16%;
+    --secondary-foreground: 210 20% 80%;
+
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 12% 50%;
+
+    --accent: 38 90% 55%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 14% 18%;
+    --input: 220 14% 18%;
+    --ring: 142 60% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --risk-low: 142 60% 45%;
+    --risk-medium: 38 90% 55%;
+    --risk-high: 0 72% 51%;
+
+    --chart-grid: 220 14% 18%;
+    --kpi-glow: 142 60% 45%;
+
+    --sidebar-background: 220 20% 5%;
+    --sidebar-foreground: 210 20% 70%;
+    --sidebar-primary: 142 60% 45%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 16% 12%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 14% 14%;
+    --sidebar-ring: 142 60% 45%;
+
+    --font-display: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .risk-glow-low {
+    box-shadow: 0 0 20px -5px hsl(var(--risk-low) / 0.3);
+  }
+  .risk-glow-medium {
+    box-shadow: 0 0 20px -5px hsl(var(--risk-medium) / 0.3);
+  }
+  .risk-glow-high {
+    box-shadow: 0 0 20px -5px hsl(var(--risk-high) / 0.3);
+  }
+  .kpi-glow {
+    box-shadow: 0 0 30px -10px hsl(var(--kpi-glow) / 0.2);
+  }
+  .grain-gradient {
+    background: linear-gradient(135deg, hsl(220 20% 7%) 0%, hsl(220 18% 12%) 100%);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
