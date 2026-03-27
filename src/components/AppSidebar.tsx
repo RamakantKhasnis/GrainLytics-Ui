@@ -40,12 +40,12 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" className="border-r border-border">
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
-            <Wheat className="h-5 w-5 text-primary" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg overflow-hidden">
+            <img src="/logo.png" alt="GRAINLYTICS Logo" className="h-full w-full object-cover" />
           </div>
           {!collapsed && (
             <div>
-              <h1 className="text-sm font-bold text-foreground tracking-tight">GrainGuard</h1>
+              <h1 className="text-sm font-bold text-foreground tracking-tight">GRAINLYTICS</h1>
               <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Monitor</p>
             </div>
           )}

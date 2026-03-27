@@ -19,7 +19,7 @@ export default function SettingsPage() {
     alertOnMedium: true,
     alertOnLow: false,
     darkMode: true,
-    companyName: "GrainGuard Corp",
+    companyName: "GRAINLYTICS Corp",
     timezone: "UTC",
   });
 

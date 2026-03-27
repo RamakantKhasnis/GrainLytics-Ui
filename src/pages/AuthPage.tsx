@@ -16,7 +16,7 @@ export default function AuthPage() {
     setLoading(true);
 
     // Map username to email internally
-    const email = `${username.toLowerCase().trim()}@grainguard.app`;
+    const email = `${username.toLowerCase().trim()}@grainlytics.app`;
 
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
@@ -32,10 +32,10 @@ export default function AuthPage() {
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="text-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 mx-auto mb-4">
-            <Wheat className="h-7 w-7 text-primary" />
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl overflow-hidden mx-auto mb-4">
+            <img src="/logo.png" alt="GRAINLYTICS Logo" className="h-full w-full object-cover" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">GrainGuard</h1>
+          <h1 className="text-2xl font-bold text-foreground">GRAINLYTICS</h1>
           <p className="text-sm text-muted-foreground mt-1">
             Sign in to your monitoring dashboard
           </p>
