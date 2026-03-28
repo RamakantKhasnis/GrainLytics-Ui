@@ -9,9 +9,18 @@ export default function AIChatPage() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const sendMessage = async () => {
-      if (!input.trim()) return;
-      const msg = input.trim();
+  const SUGGESTIONS = [
+    "What is the risk for wheat?",
+    "How to fix high humidity?",
+    "Show me risk alerts for corn.",
+    "What should I do today?"
+  ];
+
+  const sendMessage = async (overrideMsg?: string) => {
+      const textToSend = typeof overrideMsg === 'string' ? overrideMsg : input;
+      if (!textToSend.trim()) return;
+      
+      const msg = textToSend.trim();
       setHistory(prev => [...prev, { role: "user", content: msg }]);
       setInput("");
       setLoading(true);
@@ -45,6 +54,19 @@ export default function AIChatPage() {
         {loading && <div className="flex gap-3 items-center text-muted-foreground"><Bot size={16} className="animate-pulse"/><span className="text-xs animate-pulse">Computing insights...</span></div>}
       </div>
 
+      <div className="flex flex-wrap gap-2 mb-3">
+        {SUGGESTIONS.map((suggestion, idx) => (
+          <button 
+            key={idx}
+            onClick={() => sendMessage(suggestion)}
+            className="text-xs bg-primary/10 text-primary border-primary/20 border hover:bg-primary hover:text-primary-foreground transition-colors px-3 py-1.5 rounded-full"
+            disabled={loading}
+          >
+            {suggestion}
+          </button>
+        ))}
+      </div>
+
       <div className="flex gap-2">
           <input 
              className="flex-1 bg-card border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -54,7 +76,7 @@ export default function AIChatPage() {
              placeholder="e.g. Which district is most at risk?"
           />
           <button 
-             onClick={sendMessage}
+             onClick={() => sendMessage()}
              className="bg-primary text-primary-foreground h-10 w-10 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity"
              disabled={loading}
           >
