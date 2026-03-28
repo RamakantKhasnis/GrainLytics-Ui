@@ -28,3 +28,8 @@ export const chatService = {
 export const sensorService = {
   getDevices: () => api.get('/devices'),
 };
+
+export const emcService = {
+  getCurve: (grain_type: string, temperature_c: number) => 
+    api.get('/lora/emc-curve', { params: { grain_type, temperature_c } }),
+};
